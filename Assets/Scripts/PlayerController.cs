@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rBody2D;
     private SpriteRenderer render;
     private GroundSensor sensor;
-    private Animator animator;
+    //--------------------------------- HE CAMBIANDO PRIVADOR A PUBLICO PORQ NO FUNCIONABA LA ANIMACION CAMINANDO 
+    public Animator animator; 
+    //------------------------------------------------------------------------------------------------------------
     private GameManager _gameManager;
 
     public GameObject bulletPrefab;
@@ -67,34 +69,38 @@ public class PlayerController : MonoBehaviour
 
        
        
-
+    //HE CAMBIANDO LA I DEL IS RUNNING POR UNA I EN MINUSCULA EN VEZ DE MAYUSCULA DE LOS TRES (lo he dejado igual que en el apartado de animator > parameters)
         if(moveDirection.x > 0)
         {
             render.flipX = false;
-            animator.SetBool("IsRunning", true);
+            animator.SetBool("isRunning", true);
         }
         else if(moveDirection.x < 0)
         {
             render.flipX = true;
-            animator.SetBool("IsRunning", true);
+            animator.SetBool("isRunning", true);
         }
         else
         {
-            animator.SetBool("IsRunning", false);
+            animator.SetBool("isRunning", false);
         }
-        
+    //____________________________----------------------------------------------------------------------------------   
 
         if(jumpAction.WasPressedThisFrame() && sensor.isGrounded)
         {
             rBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+         
+        
+
+
 
         if(_attackAction.WasPressedThisFrame())
         {
             Shoot();
         }        
-
-        animator.SetBool("IsJumping", !sensor.isGrounded);
+        //HE CAMBIADO EL LA I A MINUSCULA 
+        animator.SetBool("isJumping", !sensor.isGrounded);
     }
 
     void FixedUpdate()
