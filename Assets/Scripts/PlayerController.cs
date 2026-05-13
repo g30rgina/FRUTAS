@@ -3,32 +3,26 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public Vector3 startPosition;
-
     public float movementSpeed = 5f;
     public float jumpForce = 10;
     public float bounceForce = 10;
-    public int direction = 1;
-
-    public Vector3 initialPosition;
-    public Vector3 finalPosition;
 
     private InputAction moveAction;
     public Vector2 moveDirection;
     private InputAction jumpAction;
-    private InputAction _pauseAction;
     private InputAction _attackAction;
 
     public Rigidbody2D rBody2D;
     private SpriteRenderer render;
     private GroundSensor sensor;
-    //--------------------------------- HE CAMBIANDO PRIVADOR A PUBLICO PORQ NO FUNCIONABA LA ANIMACION CAMINANDO 
-    public Animator animator; 
-    //------------------------------------------------------------------------------------------------------------
-    private GameManager _gameManager;
+    public Animator animator;
 
-    public GameObject bulletPrefab;
-    public Transform bulletSpawn;
+    public AudioClip deathSound;
+    public AudioClip attackSound;
+    private AudioSource audioSource;
+
+    public int health = 3;
+    private bool isDead = false;
 
     void Awake()
     {
@@ -36,46 +30,25 @@ public class PlayerController : MonoBehaviour
         render = GetComponent<SpriteRenderer>();
         sensor = GetComponentInChildren<GroundSensor>();
         animator = GetComponent<Animator>();
-        //_gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        audioSource = GetComponent<AudioSource>();
 
         moveAction = InputSystem.actions["Move"];
         jumpAction = InputSystem.actions["Jump"];
-        //_pauseAction = InputSystem.actions["Pause"];
-        //_attackAction = InputSystem.actions["Attack"];
+        _attackAction = InputSystem.actions["Attack"];
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        //transform.position = new Vector3(0, 0, 0);
-
-        //transform.position = startPosition;  
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        /*if(_pauseAction.WasPressedThisFrame())
-        {
-            _gameManager.Pause();
-        }
-
-        if(_gameManager._pause == true)
-        {
-            return;
-        }*/
+        if (isDead) return;
 
         moveDirection = moveAction.ReadValue<Vector2>();
 
-       
-       
-    //HE CAMBIANDO LA I DEL IS RUNNING POR UNA I EN MINUSCULA EN VEZ DE MAYUSCULA DE LOS TRES (lo he dejado igual que en el apartado de animator > parameters)
-        if(moveDirection.x > 0)
+        if (moveDirection.x > 0)
         {
             render.flipX = false;
             animator.SetBool("isRunning", true);
         }
-        else if(moveDirection.x < 0)
+        else if (moveDirection.x < 0)
         {
             render.flipX = true;
             animator.SetBool("isRunning", true);
@@ -84,27 +57,23 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
-    //____________________________----------------------------------------------------------------------------------   
 
-        if(jumpAction.WasPressedThisFrame() && sensor.isGrounded)
+        if (jumpAction.WasPressedThisFrame() && sensor.isGrounded)
         {
             rBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-         
-        
 
-
-
-        if(_attackAction.WasPressedThisFrame())
+        if (_attackAction.WasPressedThisFrame())
         {
-            Shoot();
-        }        
-        //HE CAMBIADO EL LA I A MINUSCULA 
+            Attack();
+        }
+
         animator.SetBool("isJumping", !sensor.isGrounded);
     }
 
     void FixedUpdate()
     {
+        if (isDead) return;
         rBody2D.linearVelocity = new Vector2(moveDirection.x * movementSpeed, rBody2D.linearVelocity.y);
     }
 
@@ -114,8 +83,41 @@ public class PlayerController : MonoBehaviour
         rBody2D.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
     }
 
-    void Shoot()
+    void Attack()
     {
-        Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        if (attackSound != null) audioSource.PlayOneShot(attackSound);
+        animator.SetTrigger("isAttacking");
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1.5f);
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.CompareTag("Enemy"))
+            {
+                hit.GetComponent<Enemigo>().TakeDamage(1);
+            }
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (isDead) return;
+        health -= damage;
+        if (health <= 0) Die();
+    }
+
+    public void Die()
+    {
+        if (isDead) return;
+        isDead = true;
+        if (deathSound != null) audioSource.PlayOneShot(deathSound);
+        animator.SetTrigger("isDead");
+        rBody2D.linearVelocity = Vector2.zero;
+        Invoke("Respawn", 1.5f);
+    }
+
+    void Respawn()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
