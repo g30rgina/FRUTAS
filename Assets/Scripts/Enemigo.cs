@@ -118,5 +118,6 @@ public class Enemigo : MonoBehaviour
     {
         if (deathSound != null) AudioSource.PlayClipAtPoint(deathSound, transform.position);
         Destroy(gameObject);
+
     }
 }
