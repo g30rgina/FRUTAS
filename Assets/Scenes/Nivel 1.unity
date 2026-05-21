@@ -19237,7 +19237,7 @@ GameObject:
   - component: {fileID: 358888568}
   - component: {fileID: 358888567}
   m_Layer: 0
-  m_Name: CinemachineCamera
+  m_Name: CinemachineCamera4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27625,7 +27625,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.50803685, y: 2.64251, z: -23.79689}
+  m_LocalPosition: {x: 0.81851435, y: 2.46174, z: -23.79689}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -38480,7 +38480,7 @@ GameObject:
   - component: {fileID: 747652448}
   - component: {fileID: 747652447}
   m_Layer: 0
-  m_Name: CinemachineCamera
+  m_Name: CinemachineCamera2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40552,8 +40552,8 @@ Transform:
   - {fileID: 1729032046}
   - {fileID: 1399650268}
   - {fileID: 915373342}
-  - {fileID: 1416508196}
   - {fileID: 624045200}
+  - {fileID: 1416508196}
   - {fileID: 1444311566}
   - {fileID: 624490341}
   - {fileID: 320620077}
@@ -84752,7 +84752,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.5000002, y: 0}
+  m_Offset: {x: -1.3385534, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -84762,7 +84762,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 18, y: 11}
+  m_Size: {x: 19.21086, y: 11}
   m_EdgeRadius: 0
 --- !u!4 &1675598427
 Transform:
@@ -89081,7 +89081,7 @@ GameObject:
   - component: {fileID: 1746835276}
   - component: {fileID: 1746835275}
   m_Layer: 0
-  m_Name: CinemachineCamera
+  m_Name: CinemachineCamera3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96911,6 +96911,7 @@ GameObject:
   - component: {fileID: 1936345543}
   - component: {fileID: 1936345548}
   - component: {fileID: 1936345549}
+  - component: {fileID: 1936345550}
   m_Layer: 0
   m_Name: Coco Idle_0
   m_TagString: Player
@@ -97202,6 +97203,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1936345550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936345542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4abe114bed6cd9439d72a9be98af58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathY: -10
+  deathSound: {fileID: 8300000, guid: 78299ff1a9d8b6442bcec3b54992c393, type: 3}
+  respawnDelay: 2
 --- !u!1 &1936566203
 GameObject:
   m_ObjectHideFlags: 0

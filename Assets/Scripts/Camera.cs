@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour 
+public class Camera : MonoBehaviour 
 
 
 
@@ -10,7 +10,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Coco")&& !collision.isTrigger)
+        if(collision.CompareTag("Player")&& !collision.isTrigger)
         {
             _virtualCamera.SetActive(true); 
         }
@@ -18,7 +18,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
         private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Coco")&& !collision.isTrigger)
+        if(collision.CompareTag("Player")&& !collision.isTrigger)
         {
             _virtualCamera.SetActive(false); 
         }
