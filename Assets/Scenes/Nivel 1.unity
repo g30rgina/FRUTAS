@@ -15349,6 +15349,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< HEAD
 --- !u!1 &289604397
 GameObject:
   m_ObjectHideFlags: 0
@@ -15514,6 +15515,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 727818139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of cf938a7 (17 / 4)
 --- !u!1 &292627546
 GameObject:
   m_ObjectHideFlags: 0
@@ -25288,6 +25291,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+<<<<<<< HEAD
 --- !u!1 &491607743
 GameObject:
   m_ObjectHideFlags: 0
@@ -25629,6 +25633,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+=======
+>>>>>>> parent of cf938a7 (17 / 4)
 --- !u!1 &497079239
 GameObject:
   m_ObjectHideFlags: 0
@@ -27592,7 +27598,11 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 19.781006, y: 2.46174, z: -23.79689}
+=======
+  m_LocalPosition: {x: 1.6410179, y: 2.46174, z: -23.79689}
+>>>>>>> parent of cf938a7 (17 / 4)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37144,6 +37154,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+<<<<<<< HEAD
 --- !u!1 &719553173
 GameObject:
   m_ObjectHideFlags: 0
@@ -37713,6 +37724,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+=======
+>>>>>>> parent of cf938a7 (17 / 4)
 --- !u!1 &732467717
 GameObject:
   m_ObjectHideFlags: 0
@@ -90606,6 +90619,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+<<<<<<< HEAD
 --- !u!1 &1778804066
 GameObject:
   m_ObjectHideFlags: 0
@@ -91173,6 +91187,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+=======
+>>>>>>> parent of cf938a7 (17 / 4)
 --- !u!1 &1803036130
 GameObject:
   m_ObjectHideFlags: 0
@@ -107732,7 +107748,10 @@ SceneRoots:
   - {fileID: 1936345547}
   - {fileID: 785758737}
   - {fileID: 1019212543}
+<<<<<<< HEAD
   - {fileID: 727818139}
   - {fileID: 491607748}
   - {fileID: 1111373226}
   - {fileID: 225778124}
+=======
+>>>>>>> parent of cf938a7 (17 / 4)
